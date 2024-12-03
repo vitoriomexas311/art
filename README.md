@@ -64,3 +64,23 @@ My project successfully developed a system for artwork identification that combi
 - [PyTorch Documentation](https://pytorch.org/docs/stable/index.html)
 - [WikiArt DataSet used](https://www.kaggle.com/datasets/steubk/wikiart)
 - [National Gallery of Art DataSet used](https://www.nga.gov/open-access-images/open-data.html)
+- [The Website that is in Progress](whatartpiece.art)
+
+
+# How to Use - ResNet_Image_Retrieval.ipynb
+
+## Dataset
+- The first order of business is ensuring that you download the dataset. For the sake of testing, you can simply set up a function that refers to the WikiArt dataset on something like HuggingFace.
+
+## FAISS
+- Next, when you run update directory references within the notebook, you should be able to run the notebook.
+- Because you will not have a downloaded features file, it will use the pre-trained weights of ResNet50 to extract the features, and save them into a .bin file. This only needs to be done once, after features are extracted, it will use that same feature file for whatever art inputted.
+
+## Running it
+- Simply run the file.
+- In its current state, it will go through a testing iteration of 1,000 test images, where it will use a gaussian distributed amount of blur and rotation, and then attempt to predict what artpiece it is.
+- If you want to input your own image, simply comment out the section with the 1,000 rotated and blurred for loop'd pictures, and uncomment the section that I currently have, titled 'Section 7'.
+- Refer to your image in the input image array, and in about 5 seconds flat, after running, you'll have it identified!
+
+# >98% accuracy on rotated and blurred images, >99% TOP 5 accuracy on rotated and blurred images
+
