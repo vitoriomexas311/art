@@ -64,7 +64,7 @@ My project successfully developed a system for artwork identification that combi
 - [PyTorch Documentation](https://pytorch.org/docs/stable/index.html)
 - [WikiArt DataSet used](https://www.kaggle.com/datasets/steubk/wikiart)
 - [National Gallery of Art DataSet used](https://www.nga.gov/open-access-images/open-data.html)
-- [The Website that is in Progress](https://whatartpiece.art/)
+- [The Website that is in Progress](https://whatartpiece.art/) - Not completely finished!!
 
 
 # How to Use - ResNet_Image_Retrieval.ipynb
