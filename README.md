@@ -40,28 +40,27 @@ ResNet50 has proven to be extremely effective for feature extraction in image cl
 - **Model:** ResNet50 pre-trained on ImageNet.
 - **Fine-tuning parameters:** Learning rate of 0.001, Adam optimizer, and cross-entropy loss.
 - **Feature extraction:** Final layer features normalized and indexed using FAISS.
-- **Hardware:** NVIDIA GPU with PyTorch.
+- **Hardware:** NVIDIA K80 GPU, 12 CPU, 128 GB RAM.
 
 ### Model architecture
-ResNet50 with its fully connected layer replaced by a new classification layer matching the number of artwork classes. Initial layers are frozen during fine-tuning.
+- For Basic Model (which was used for concluded ouputs) - ResNet50 pre-trained on ImageNet.
+- For Fine-Tuned model - ResNet50 with its fully connected layer replaced by a new classification layer matching the number of artwork classes. Initial layers are frozen during fine-tuning.
 
 ## Experiment Results
 
 ### Main results
-- **Training and validation accuracy:** Achieved a validation accuracy of ~85% after 10 epochs.
-- **Loss reduction:** Training and validation loss consistently decreased, indicating effective learning.
-
-### Supplementary results
-- **Data augmentation:** Improved generalization through random rotations, flips, and color jitter.
-- **Batch size and learning rate tuning:** Optimized for hardware and convergence.
+- **Training and validation accuracy:** Achieved an accuracy of >98% when tested on **randomly rotated** and **blurred** images. >99% top 5 accuracy.
+- **Loss reduction on Fine-Tuned Model:** Training and validation loss consistently decreased, indicating effective learning. However, this never achieved as effective results as FAISS.
 
 ## Discussion
-The results demonstrate the effectiveness of combining fine-tuned ResNet50 and FAISS for artwork identification. Compared to existing solutions, this approach provides high accuracy and scalable retrieval. Future improvements could include exploring larger datasets, using transformer-based models, and enabling multilingual metadata retrieval.
+The results demonstrate the effectiveness of combining fine-tuned ResNet50 and FAISS for artwork identification. I think that the next step would be to attempt fine-tuning even further, but instead of simply fine-tuning on the images in the dataset, fine tune on genres. I believe that the erason that I ran into so many issues when I was fine-tuning my model was because it was overfitting so ahrd, which is apparently common when training on very diverse ranges of images. In fact, discovering this was when I started to think more about FAISS. So, instead, I think my original plan would be far more effective if done on genre instead of the images themselves. 
 
 ## Conclusion
-This project successfully developed a system for artwork identification that combines supervised learning and unsupervised feature indexing. It offers a scalable and efficient solution with potential applications in museums, galleries, and cultural institutions.
+My project successfully developed a system for artwork identification that combines supervised learning and unsupervised feature indexing. It offers a scalable and efficient solution with potential applications in museums, galleries, and any cultural institutions, including individuals simply interested in artwork observation.
 
 ## References
 - [ResNet50 Paper](https://arxiv.org/abs/1512.03385)
 - [FAISS Library](https://github.com/facebookresearch/faiss)
 - [PyTorch Documentation](https://pytorch.org/docs/stable/index.html)
+- [WikiArt DataSet used](https://www.kaggle.com/datasets/steubk/wikiart)
+- [National Gallery of Art DataSet used](https://www.nga.gov/open-access-images/open-data.html)
